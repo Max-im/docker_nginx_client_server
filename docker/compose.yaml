@@ -10,11 +10,6 @@ services:
     ports:
       - "5432:5432"
     restart: always
-    
-  redis:
-    image: 'redislabs/redismod'
-    ports:
-      - '6379:6379'
 
   server1:
     restart: on-failure
