@@ -21,11 +21,16 @@ services:
     restart: on-failure
     build: 
       context: ../server
-      args:
-        DB_NAME: "${POSTGRES_DB}"
-        DB_USER: "${POSTGRES_USER}"
-        DB_PASSWORD: "${POSTGRES_PW}"
+      # args:
+      #   DB_NAME: "${POSTGRES_DB}"
+      #   DB_USER: "${POSTGRES_USER}"
+      #   DB_PASSWORD: "${POSTGRES_PW}"
     hostname: server1
+    environment:
+      DB_NAME: "${POSTGRES_DB}"
+      DB_USER: "${POSTGRES_USER}"
+      DB_PASSWORD: "${POSTGRES_PW}"
+      DB_HOST: postgres
     ports:
       - '81:5000'
     depends_on:
