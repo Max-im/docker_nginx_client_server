@@ -15,4 +15,4 @@ const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
 	logging: true
 });
 
-export { sequelize };
+mosule.exports = { sequelize };
