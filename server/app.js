@@ -9,4 +9,4 @@ process.on('uncaughtException', err => {
     process.exit(1);
 });
 
-export { app };
+module.exports = {app};
