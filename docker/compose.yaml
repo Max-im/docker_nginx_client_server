@@ -10,20 +10,22 @@ services:
     ports:
       - "5432:5432"
     restart: always
+    
 
   server1:
     restart: on-failure
-    build: ../server
+    build: 
+      context: ../server
+      args:
+        DB_NAME: "${POSTGRES_DB}"
+        DB_USER: "${POSTGRES_USER}"
+        DB_PASSWORD: "${POSTGRES_PW}"
     hostname: server1
     ports:
       - '81:5000'
-
-  server2:
-    restart: on-failure
-    build: ../server
-    hostname: server2
-    ports:
-      - '82:5000'
+    depends_on:
+      postgres:
+        condition: service_healthy
 
   nginx:
     build: ../nginx
@@ -31,6 +33,5 @@ services:
     - '80:80'
     depends_on:
     - server1
-    - server2
 
 
