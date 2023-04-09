@@ -7,7 +7,6 @@ const {sequelize} = require('./db');
     sequelize.authenticate()
     .then(() => app.listen(5000, () => console.log('app run')))
     .catch(err => {
-
         console.log('=====================')
         console.log(err)
         console.log('=====================')

@@ -5,7 +5,7 @@ const dbUser = process.env.DB_USER;
 const dbPassword = process.env.DB_PASSWORD;
 
 console.log("===============================")
-console.log(dbName, dbUser, dbPassword)
+console.log(dbName, dbUser, dbPassword, process.env.DB_HOST, process.env.DB_PORT)
 console.log("===============================")
 
 const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
