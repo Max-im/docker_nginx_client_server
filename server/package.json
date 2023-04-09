@@ -2,12 +2,14 @@
   "name": "web",
   "version": "1.0.0",
   "description": "Running Node.js and Express.js on Docker",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js",
+    "dev": "node index.js"
   },
   "dependencies": {
     "express": "^4.17.2",
+    "pg": "^8.10.0",
     "sequelize": "^6.30.0"
   },
   "author": "",
