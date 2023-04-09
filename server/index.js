@@ -5,14 +5,13 @@ const {sequelize} = require('./db');
 
 (async ()=> {
     sequelize.authenticate()
-    .then(() => {
-        app.listen(5000, () => console.log('app run'));
-    })
-    .catch(err) {
+    .then(() => app.listen(5000, () => console.log('app run')))
+    .catch(err => {
+
         console.log('=====================')
         console.log(err)
         console.log('=====================')
-    }
+    })
     // const pgClient = new Pool({
     //     user: process.env.DB_USER,
     //     host: process.env.DB_HOST,
