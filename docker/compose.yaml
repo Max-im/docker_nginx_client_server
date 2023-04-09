@@ -1,47 +1,22 @@
-
 services:
-  postgres:
-    container_name: postgres
-    image: postgres:latest
-    environment:
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PW}
-      - POSTGRES_DB=${POSTGRES_DB} #optional (specify default database instead of $POSTGRES_DB)
-    ports:
-      - "5432:5432"
+  db:
+    image: 'postgres:latest'
     restart: always
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-    
-
-  server1:
-    restart: on-failure
-    build: 
-      context: ../server
-      # args:
-      #   DB_NAME: "${POSTGRES_DB}"
-      #   DB_USER: "${POSTGRES_USER}"
-      #   DB_PASSWORD: "${POSTGRES_PW}"
-    hostname: server1
     environment:
-      DB_NAME: "${POSTGRES_DB}"
-      DB_USER: "${POSTGRES_USER}"
-      DB_PASSWORD: "${POSTGRES_PW}"
-      DB_HOST: postgres
-    ports:
-      - '81:5000'
-    depends_on:
-      postgres:
-        condition: service_healthy
-
+      POSTGRES_PASSWORD: "${DB_PASSWORD}"
+      POSTGRES_USER: "${DB_USER}"
   nginx:
+    restart: always
     build: ../nginx
     ports:
-    - '80:80'
+      - '80:80'
     depends_on:
-    - server1
-
-
+      - server1
+  server1:
+    build: ../server
+    environment:
+      - DB_HOST=db
+      - DB_PASSWORD="${DB_PASSWORD}"
+      - DB_USER="${DB_USER}"
+      - DB_NAME="${DB_NAME}"
+      - DB_PORT=5432
