@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 COPY package.json package-lock.json ./
 RUN npm ci
-COPY ./server.js ./
+COPY . .
 
 ARG DB_NAME
 ARG DB_USER
