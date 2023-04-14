@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 COPY package.json package-lock.json ./
 RUN npm ci
-RUN npm run migrate
 COPY . .
+RUN npm run migrate
 
 CMD ["npm","start"]
