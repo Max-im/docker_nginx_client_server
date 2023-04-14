@@ -22,11 +22,11 @@ services:
     build: ../migrations
     depends_on:
       db: 
-        condition: service_completed_successfully
+        condition: service_healthy
   api:
     build: ../server
     depends_on:
       migrate: 
-        condition: service_healthy
+        condition: service_completed_successfully
     env_file:
     - .env
