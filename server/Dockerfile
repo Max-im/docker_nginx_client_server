@@ -5,6 +5,6 @@ WORKDIR /usr/src/app
 COPY package.json package-lock.json ./
 RUN npm i
 COPY . .
-RUN prisma generate
+RUN npx prisma generate
 
 CMD ["npm","start"]
