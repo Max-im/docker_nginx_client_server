@@ -1,20 +1,19 @@
 const express = require('express');
 const app = express();
-const { Init } = require('./models/Init');
+const {db} = require('./db');
 
 app.use(express.json());
 app.use(express.static('public'));
 
 app.get('/', async (req, res) => { 
-    const data = await Init.findAll({});
-    console.log(data)
+    const data = await db.init.findMany();
     res.json({data});
 });
 
 app.get('/:val', async (req, res) => {
     const {val} = req.params;
-    await Init.create({ val });
-    const data = await Init.findAll({});
+    await db.init.create({data: {val}})
+    const data = await db.init.findMany();
     res.json({data});
 });
 

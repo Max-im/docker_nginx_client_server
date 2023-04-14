@@ -1,11 +1,5 @@
-const { Sequelize } = require('sequelize');
-const config = require('../config');
+const { PrismaClient } = require('@prisma/client');
 
-const sequelize = new Sequelize(config.dbName, config.dbUser, config.dbPassword, {
-	dialect: 'postgres',
-	host: config.dbHost,
-	port: Number(config.dbPort),
-	logging: true
-});
+const prisma = new PrismaClient();
 
-module.exports = { sequelize };
+module.exports = {db: prisma};
