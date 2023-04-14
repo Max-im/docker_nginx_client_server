@@ -6,6 +6,7 @@
   "scripts": {
     "db:init": "prisma init --datasource-provider postgresql",
     "db:push": "prisma db push",
+    "postinstall": "prisma generate",
     "start": "node ./src/index.js",
     "dev": "node ./src/index.js"
   },
