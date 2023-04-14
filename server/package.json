@@ -4,8 +4,9 @@
   "description": "Running Node.js and Express.js on Docker",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "node index.js"
+    "start": "node ./src/index.js",
+    "dev": "node ./src/index.js",
+    "migrate": "sequelize-cli db:migrate"
   },
   "dependencies": {
     "express": "^4.17.2",
@@ -13,5 +14,8 @@
     "sequelize": "^6.30.0"
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "sequelize-cli": "^6.6.0"
+  }
 }
