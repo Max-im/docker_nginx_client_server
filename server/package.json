@@ -4,10 +4,10 @@
   "description": "Running Node.js and Express.js on Docker",
   "main": "index.js",
   "scripts": {
-    "init:db": "prisma init --datasource-provider postgresql",
+    "db:init": "prisma init --datasource-provider postgresql",
+    "db:push": "prisma db push",
     "start": "node ./src/index.js",
-    "dev": "node ./src/index.js",
-    "migrate": "sequelize-cli db:migrate"
+    "dev": "node ./src/index.js"
   },
   "dependencies": {
     "@prisma/client": "^4.12.0",

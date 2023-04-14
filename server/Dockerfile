@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 COPY package.json package-lock.json ./
 RUN npm i
+RUN npm run db:push
 COPY . .
-RUN npx prisma generate
 
 CMD ["npm","start"]
