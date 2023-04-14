@@ -3,6 +3,11 @@ services:
   db:
     image: 'postgres:latest'
     restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U ${DB_USER} -d ${DB_NAME}'"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
     environment:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_USER=${DB_USER}
@@ -16,6 +21,7 @@ services:
   api:
     build: ../server
     depends_on:
-      - db
+      db: 
+        condition: service_healthy
     env_file:
     - .env
