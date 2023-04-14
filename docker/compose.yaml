@@ -12,6 +12,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    ports:
+      - "5432:5432"
   nginx:
     restart: always
     build: ../nginx
@@ -27,4 +29,4 @@ services:
     env_file:
     - .env
     environment:
-      - DATABASE_URL=postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}?connection_limit=5&pool_timeout=2
+      - DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}?connection_limit=5&pool_timeout=2
