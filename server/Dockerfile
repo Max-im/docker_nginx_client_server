@@ -5,7 +5,6 @@ WORKDIR /usr/src/app
 COPY package.json package-lock.json ./
 RUN npm i
 COPY . .
-RUN npm run db:init
 RUN npm run db:push
 
 CMD ["npm","start"]
