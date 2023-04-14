@@ -15,5 +15,7 @@ services:
       - api
   api:
     build: ../server
+    depends_on:
+      - db
     env_file:
     - .env
