@@ -6,7 +6,7 @@
 - server `nodejs` with `express` and `prisma` as ORM
 - database `postgresql`
 - proxy `nginx`
-- contaierised by `docker`
+- containerized by `docker`
 - control by `docker-compose`
 
 ## Installation
