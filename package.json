@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cd docker && docker-compose up --build"
+    "start": "docker-compose -f ./docker/compose.yaml up --build --remove-orphans"
   },
   "repository": {
     "type": "git",
